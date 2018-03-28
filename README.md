@@ -1,16 +1,14 @@
 # RFInitializing
 
+By using RFInitializing, object initialization becomes easier.
+
+Let's compare it with an example.
+
+In root class:
+
 <table>
-  <thead>
-    <tr>
-      <th></th>
-      <th>Before</th>
-      <th>After</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>In root class</td><td>
+<tr><th>Before</th><th>After</th></tr>
+<tr><td>
 
 ```objective-c
 @implementation BaseView
@@ -49,15 +47,21 @@ RFInitializingRootForUIView
 }
 
 - (void)afterInit {
-    // do somthing after the inistance has been initialized
+    // do somthing after the inistance
+    // has been initialized
 }
 
 @end
 ```
 
 </td></tr>
-<tr>
-    <td>In subclass</td><td>
+</table>
+
+In subclass:
+
+<table>
+<tr><th>Before</th><th>After</th></tr>
+<tr><td>
 
 ```objective-c
 @implementation FooView
@@ -65,8 +69,8 @@ RFInitializingRootForUIView
 - (instancetype)initWithBar:(Bar)bar {
     self = [super initWithFrame:CGRectZero];
     if (self) {
-        _bar = bar;
         [self commonSetupForSubclasss];
+        _bar = bar;
     }
     return self;
 }
@@ -116,8 +120,6 @@ RFInitializingRootForUIView
 ```
 
 </td></tr>
-
-  </tbody>
 </table>
 
 ## Purpose
