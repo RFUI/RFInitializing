@@ -1,5 +1,9 @@
 # RFInitializing
 
+[![Build Status](https://travis-ci.org/RFUI/RFInitializing.svg?branch=master)](https://travis-ci.org/RFUI/RFInitializing)
+![CocoaPods Compatible](https://img.shields.io/cocoapods/v/RFInitializing.svg)
+[![Platform](https://img.shields.io/cocoapods/p/RFInitializing.svg?style=flat)](http://cocoadocs.org/docsets/RFInitializing)
+
 By using RFInitializing, object initialization becomes easier.
 
 Let's compare it with an example.
