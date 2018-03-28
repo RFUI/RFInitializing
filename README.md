@@ -1,5 +1,125 @@
 # RFInitializing
 
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>Before</th>
+      <th>After</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>In root class</td><td>
+
+```objective-c
+@implementation BaseView
+
+- (instancetype)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self commonSetup];
+    }
+    return self;
+}
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        [self commonSetup];
+    }
+    return self;
+}
+
+- (void)commonSetup {
+    // do something
+}
+
+@end
+```
+
+</td><td>
+
+```objective-c
+@implementation BaseView
+RFInitializingRootForUIView
+
+- (void)onInit {
+    // do the common setup
+}
+
+- (void)afterInit {
+    // do somthing after the inistance has been initialized
+}
+
+@end
+```
+
+</td></tr>
+<tr>
+    <td>In subclass</td><td>
+
+```objective-c
+@implementation FooView
+
+- (instancetype)initWithBar:(Bar)bar {
+    self = [super initWithFrame:CGRectZero];
+    if (self) {
+        _bar = bar;
+        [self commonSetupForSubclasss];
+    }
+    return self;
+}
+
+- (instancetype)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self commonSetupForSubclasss];
+    }
+    return self;
+}
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        [self commonSetupForSubclasss];
+    }
+    return self;
+}
+
+- (void)commonSetupForSubclasss {
+    // do something
+}
+
+@end
+```
+
+</td><td>
+
+```objective-c
+@implementation FooView
+
+- (instancetype)initWithBar:(Bar)bar {
+    self = [super initWithFrame:CGRectZero];
+    if (self) {
+        _bar = bar;
+    }
+    return self;
+}
+
+- (void)onInit {
+    [super onInit];
+    // common setup for subclasss
+}
+
+@end
+```
+
+</td></tr>
+
+  </tbody>
+</table>
+
 ## Purpose
 
 It´s boring to write the init method again and again, especially there are many init mehods to overwrite. For example, if you want subclass UIView, you may overwrite ini, initWithFrame:, initWithColder:. And if you want subclass that class you also should overwrite these methods again, WTF.
