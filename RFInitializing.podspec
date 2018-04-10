@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'RFInitializing'
-  s.version          = '1.0.0'
+  s.version          = '1.1.0'
   s.summary          = 'Make object initialization easier. Stop writing init methods again and again.'
 
   s.homepage         = 'https://github.com/RFUI/RFInitializing'
@@ -13,6 +13,6 @@ Pod::Spec.new do |s|
   s.tvos.deployment_target = '9.0'
   s.watchos.deployment_target = '2.0'
 
-  s.source_files = [ 'RFInitializing.h' ]
+  s.source_files = [ 'RFInitializing.{h,m}' ]
   s.public_header_files = [ 'RFInitializing.h' ]
 end
